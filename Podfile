@@ -9,5 +9,7 @@ target 'ToDoList' do
   pod 'Alamofire', '~> 4.8'
   pod 'AlamofireObjectMapper', '~> 5.2'
   pod 'AlamofireImage', '~> 3.5'
+  pod 'AlamofireNetworkActivityLogger', '~> 2.3'
   pod 'TTGSnackbar', '~> 1.7'
+  pod 'MBProgressHUD', '~> 1.1.0'
 end

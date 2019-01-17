@@ -8,8 +8,9 @@
 
 import UIKit
 import TTGSnackbar
+import MBProgressHUD
 
-class TableViewController: UITableViewController {
+class TableViewController: UIBaseViewController, UITableViewDelegate, UITableViewDataSource {
     fileprivate var presenter: TableViewPresenter?
     fileprivate var snackbar: TTGSnackbar?
     
@@ -20,6 +21,7 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = TableViewPresenter(view: self)
+        prepareUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,18 +29,43 @@ class TableViewController: UITableViewController {
         presenter?.prepareData()
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "TaskTableViewCell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TaskTableViewCell else {
+            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+        }
         
         let task = tasks[indexPath.row]
-        
-        cell.textLabel?.text = task.title
+        cell.bindTo(task: task)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+             let task = tasks[indexPath.row]
+            presenter?.deleteTask(id: task.id!)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let vc = TaskViewController.newInstance()
+        vc.taskDto = tasks[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func refreshTasks(tasks: [TaskDto]) {
@@ -46,11 +73,8 @@ class TableViewController: UITableViewController {
         tTasks.reloadData()
     }
     
-    func showError(message: String) {
-        if let snackbar = snackbar {
-            snackbar.message = message
-            snackbar.show()
-        }
+    fileprivate func prepareUI() {
+     
     }
 }
 

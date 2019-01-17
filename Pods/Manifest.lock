@@ -2,33 +2,42 @@ PODS:
   - Alamofire (4.8.0)
   - AlamofireImage (3.5.0):
     - Alamofire (~> 4.8)
+  - AlamofireNetworkActivityLogger (2.3.0):
+    - Alamofire (~> 4.6)
   - AlamofireObjectMapper (5.2.0):
     - Alamofire (~> 4.7)
     - ObjectMapper (~> 3.4)
+  - MBProgressHUD (1.1.0)
   - ObjectMapper (3.4.2)
   - TTGSnackbar (1.7.5)
 
 DEPENDENCIES:
   - Alamofire (~> 4.8)
   - AlamofireImage (~> 3.5)
+  - AlamofireNetworkActivityLogger (~> 2.3)
   - AlamofireObjectMapper (~> 5.2)
+  - MBProgressHUD (~> 1.1.0)
   - TTGSnackbar (~> 1.7)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireImage
+    - AlamofireNetworkActivityLogger
     - AlamofireObjectMapper
+    - MBProgressHUD
     - ObjectMapper
     - TTGSnackbar
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
+  AlamofireNetworkActivityLogger: 6f3076652ab7fa6c819b59be08ea038d339e36d8
   AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   TTGSnackbar: 2cf4e7b6ffbe5cddf248a73f3ee952b71bee8ea3
 
-PODFILE CHECKSUM: c90c21620090ff5a7974f9845b2a3dc129218d86
+PODFILE CHECKSUM: aaeb9a52714dcd76ab80c727f44b7e263feb59fc
 
 COCOAPODS: 1.5.3

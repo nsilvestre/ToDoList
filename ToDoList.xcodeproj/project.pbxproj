@@ -18,6 +18,9 @@
 		4F226E5C21EFBA27004440EA /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F226E5B21EFBA27004440EA /* ApiClient.swift */; };
 		4F226E6721EFCF62004440EA /* TableViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F226E6621EFCF62004440EA /* TableViewPresenter.swift */; };
 		4F226E6B21EFE2CF004440EA /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F226E6A21EFE2CF004440EA /* TaskTableViewCell.swift */; };
+		4F226E6E21F0E5D8004440EA /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F226E6D21F0E5D7004440EA /* TaskViewController.swift */; };
+		4F226E7021F0EF83004440EA /* TaskViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F226E6F21F0EF83004440EA /* TaskViewPresenter.swift */; };
+		4F226E7321F10E8C004440EA /* UIBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F226E7221F10E8C004440EA /* UIBaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		4F226E5B21EFBA27004440EA /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		4F226E6621EFCF62004440EA /* TableViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewPresenter.swift; sourceTree = "<group>"; };
 		4F226E6A21EFE2CF004440EA /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		4F226E6D21F0E5D7004440EA /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		4F226E6F21F0EF83004440EA /* TaskViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewPresenter.swift; sourceTree = "<group>"; };
+		4F226E7221F10E8C004440EA /* UIBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBaseViewController.swift; sourceTree = "<group>"; };
 		69C4ABE5F864842B42082843 /* Pods_ToDoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F709F1F92964F898DE4A7A /* Pods-ToDoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoList.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToDoList/Pods-ToDoList.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,13 +77,12 @@
 		4F226E4121EF8B30004440EA /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				4F226E7421F1293F004440EA /* Views */,
 				4F226E6421EFCED4004440EA /* Ui */,
 				4F226E5A21EFB9DE004440EA /* Managers */,
 				4F226E5721EF9689004440EA /* Models */,
 				4F226E4221EF8B30004440EA /* AppDelegate.swift */,
-				4F226E4621EF8B30004440EA /* Main.storyboard */,
 				4F226E4C21EF8B33004440EA /* Assets.xcassets */,
-				4F226E4E21EF8B33004440EA /* LaunchScreen.storyboard */,
 				4F226E5121EF8B33004440EA /* Info.plist */,
 				4F226E4921EF8B30004440EA /* ToDoList.xcdatamodeld */,
 			);
@@ -103,6 +108,8 @@
 		4F226E6421EFCED4004440EA /* Ui */ = {
 			isa = PBXGroup;
 			children = (
+				4F226E7121F0F82B004440EA /* Base */,
+				4F226E6C21F0E59C004440EA /* Task */,
 				4F226E6521EFCEE1004440EA /* Main */,
 			);
 			path = Ui;
@@ -116,6 +123,32 @@
 				4F226E6A21EFE2CF004440EA /* TaskTableViewCell.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		4F226E6C21F0E59C004440EA /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				4F226E6D21F0E5D7004440EA /* TaskViewController.swift */,
+				4F226E6F21F0EF83004440EA /* TaskViewPresenter.swift */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
+		4F226E7121F0F82B004440EA /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				4F226E7221F10E8C004440EA /* UIBaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		4F226E7421F1293F004440EA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4F226E4621EF8B30004440EA /* Main.storyboard */,
+				4F226E4E21EF8B33004440EA /* LaunchScreen.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		991335B18D624BDAF08392E7 /* Frameworks */ = {
@@ -213,7 +246,9 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-ToDoList/Pods-ToDoList-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityLogger/AlamofireNetworkActivityLogger.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/TTGSnackbar/TTGSnackbar.framework",
 			);
@@ -221,7 +256,9 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityLogger.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTGSnackbar.framework",
 			);
@@ -255,11 +292,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F226E7021F0EF83004440EA /* TaskViewPresenter.swift in Sources */,
 				4F226E6B21EFE2CF004440EA /* TaskTableViewCell.swift in Sources */,
 				4F226E6721EFCF62004440EA /* TableViewPresenter.swift in Sources */,
 				4F226E5921EF969D004440EA /* TaskDto.swift in Sources */,
 				4F226E4521EF8B30004440EA /* TableViewController.swift in Sources */,
+				4F226E7321F10E8C004440EA /* UIBaseViewController.swift in Sources */,
 				4F226E4B21EF8B30004440EA /* ToDoList.xcdatamodeld in Sources */,
+				4F226E6E21F0E5D8004440EA /* TaskViewController.swift in Sources */,
 				4F226E4321EF8B30004440EA /* AppDelegate.swift in Sources */,
 				4F226E5C21EFBA27004440EA /* ApiClient.swift in Sources */,
 			);

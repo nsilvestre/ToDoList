@@ -28,4 +28,21 @@ class TableViewPresenter {
             }
         }
     }
+    
+    func deleteTask(id: Int32) {
+        self.view?.showProgressHUD()
+        ApiClient.shared.deleteTask(id: id) { result in
+            switch result {
+            case .success:
+                self.view?.hideProgressHUD()
+                self.prepareData()
+                break
+                
+            case .failure(let error):
+                self.view?.hideProgressHUD()
+                self.view?.showError(message: error.userMessage())
+                break
+            }
+        }
+    }
 }

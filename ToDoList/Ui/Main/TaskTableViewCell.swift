@@ -10,6 +10,9 @@ import UIKit
 
 class TaskTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var lTitle: UILabel!
+    @IBOutlet weak var lDetail: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +24,8 @@ class TaskTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func bindTo(task: TaskDto) {
+        lTitle.text = task.title
+        lDetail.text = task.detail
+    }
 }

@@ -38,6 +38,59 @@ class ApiClient {
             }
     }
     
+    func addTask(taskDto: TaskDto, completion: @escaping (_ result: ApiResult<Void>) -> Void) {
+        let url = "\(baseUrl)/tasks"
+        
+        var parameters = [String:String]()
+        parameters["title"] = taskDto.title
+        parameters["detail"] = taskDto.detail
+        
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
+            .validate(statusCode: 200..<300)
+            .response { response in
+                let error = response.error
+                if error == nil {
+                    completion(ApiResult.success(result: ()))
+                } else {
+                    completion(ApiResult.failure(error: self.apiError(from: error)))
+                }
+        }
+    }
+    
+    func updateTask(taskDto: TaskDto, completion: @escaping (_ result: ApiResult<Void>) -> Void) {
+        let url = "\(baseUrl)/tasks/\(taskDto.id!)"
+        
+        var parameters = [String:String]()
+        parameters["title"] = taskDto.title
+        parameters["detail"] = taskDto.detail
+        
+        Alamofire.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default)
+            .validate(statusCode: 200..<300)
+            .response { response in
+                let error = response.error
+                if error == nil {
+                    completion(ApiResult.success(result: ()))
+                } else {
+                    completion(ApiResult.failure(error: self.apiError(from: error)))
+                }
+        }
+    }
+    
+    func deleteTask(id: Int32, completion: @escaping (_ result: ApiResult<Void>) -> Void) {
+        let url = "\(baseUrl)/tasks/\(id)"
+        
+        Alamofire.request(url, method: .delete)
+            .validate(statusCode: 200..<300)
+            .response { response in
+                let error = response.error
+                if error == nil {
+                    completion(ApiResult.success(result: ()))
+                } else {
+                    completion(ApiResult.failure(error: self.apiError(from: error)))
+                }
+            }
+    }
+    
     private func apiError(from error: Error?) -> ApiError {
         if let error = error as? ApiError {
             return error
