@@ -6,6 +6,7 @@ before_install:
 
 install:
   - gem install cocoapods
+  - pod repo update
   - pod install
 
 script:
