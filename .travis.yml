@@ -2,11 +2,9 @@ os: osx
 osx_image: xcode10.1
 
 before_install:
-  - curl -L https://get.rvm.io | bash -s stable
+  - rvm --default use 2.4.5
 
 install:
-  - rvm install ruby-2.4.5
-  - rvm --default use 2.4.5
   - gem install cocoapods
   - pod install
 
