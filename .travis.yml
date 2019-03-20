@@ -1,6 +1,5 @@
 os: osx
 osx_image: xcode10.1
-language: objective-c
 
 before_install:
   - curl -L https://get.rvm.io | bash -s stable
