@@ -1,0 +1,15 @@
+os: osx
+osx_image: xcode10.1
+language: objective-c
+
+before_install:
+  - curl -L https://get.rvm.io | bash -s stable
+
+install:
+  - rvm install ruby-2.4.5
+  - rvm --default use 2.4.5
+  - gem install cocoapods
+  - pod install
+
+script:
+  - xcodebuild -sdk iphonesimulator -workspace ToDoList.xcworkspace -scheme ToDoList -configuration Release clean build -derivedDataPath builddata/
