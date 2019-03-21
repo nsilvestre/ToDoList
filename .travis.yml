@@ -2,12 +2,20 @@ os: osx
 osx_image: xcode10.1
 
 before_install:
+  - /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  - brew uninstall node
+  - brew install node
   - rvm --default use 2.4.5
 
 install:
   - gem install cocoapods
   - pod repo update
   - pod install
+  - npm install -g appium
+  - brew upgrade carthage
 
 script:
   - xcodebuild -sdk iphonesimulator -workspace ToDoList.xcworkspace -scheme ToDoList -configuration Release clean build -derivedDataPath builddata/
+  - git clone https://github.com/nsilvestre/appiumTest.git
+  - appium &
+  - mvn test
