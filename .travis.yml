@@ -18,4 +18,5 @@ script:
   - xcodebuild -sdk iphonesimulator -workspace ToDoList.xcworkspace -scheme ToDoList -configuration Release clean build -derivedDataPath builddata/
   - git clone https://github.com/nsilvestre/appiumTest.git
   - appium &
+  - cd appiumTest
   - mvn test
